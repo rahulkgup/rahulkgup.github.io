@@ -1,6 +1,772 @@
-<html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahul Gupta | A Decade in AI/ML</title>
+    <meta name="description" content="Head of AI Foundry with 15+ years in tech. Building AI/ML solutions since 2016. Enterprise AI architectures, multi-agent systems, and responsible AI for Fortune 500 clients.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Rahul Gupta | A Decade in AI/ML">
+    <meta property="og:description" content="Head of AI Foundry. 15+ years in tech. Building enterprise AI systems that drive measurable impact.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rahulkgup.github.io">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwindcss.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['Instrument Serif', 'Georgia', 'serif'],
+                        'body': ['Outfit', 'system-ui', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        'ink': '#0a0a0b',
+                        'paper': '#fafaf9',
+                        'accent': '#e85d04',
+                        'muted': '#71717a',
+                        'subtle': '#27272a',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Outfit', sans-serif;
+            background: #0a0a0b;
+            color: #fafaf9;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, #e85d04 10%, #e85d04 90%, transparent);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: -7px;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #0a0a0b;
+            border: 2px solid #e85d04;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:hover .timeline-dot {
+            background: #e85d04;
+            box-shadow: 0 0 20px rgba(232, 93, 4, 0.5);
+        }
+        
+        .project-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid transparent;
+        }
+        
+        .project-card:hover {
+            border-color: rgba(232, 93, 4, 0.3);
+            transform: translateX(8px);
+            background: rgba(232, 93, 4, 0.05);
+        }
+        
+        .tech-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            padding: 0.25rem 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            color: #a1a1aa;
+            transition: all 0.2s ease;
+        }
+        
+        .tech-tag:hover {
+            background: rgba(232, 93, 4, 0.15);
+            color: #e85d04;
+        }
+        
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 1000;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+        
+        .hero-gradient {
+            background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(232, 93, 4, 0.15), transparent);
+        }
+        
+        .github-link svg {
+            transition: transform 0.2s ease;
+        }
+        .github-link:hover svg {
+            transform: translateX(4px);
+        }
+        
+        .recognition-card {
+            background: linear-gradient(135deg, rgba(232, 93, 4, 0.1) 0%, rgba(232, 93, 4, 0.02) 100%);
+            border: 1px solid rgba(232, 93, 4, 0.2);
+        }
+        
+        .publication-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .publication-card:hover {
+            border-color: rgba(232, 93, 4, 0.3);
+            background: rgba(232, 93, 4, 0.05);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        .animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
+        .animate-delay-4 { animation-delay: 0.4s; opacity: 0; }
+        
+        .era-badge {
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.1em;
+        }
+        
+        .career-marker {
+            background: linear-gradient(90deg, rgba(232, 93, 4, 0.2), transparent);
+            border-left: 2px solid #e85d04;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <div class="grain"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-ink/80 border-b border-white/5">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-display text-xl text-paper">RG</a>
+            <div class="flex gap-6 text-sm text-muted">
+                <a href="#journey" class="hover:text-paper transition-colors">Journey</a>
+                <a href="#publications" class="hover:text-paper transition-colors">Publications</a>
+                <a href="#recognition" class="hover:text-paper transition-colors">Recognition</a>
+                <a href="https://github.com/rahulkgup" target="_blank" class="hover:text-paper transition-colors flex items-center gap-1">
+                    GitHub
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <header class="hero-gradient min-h-[70vh] flex items-center justify-center pt-20">
+        <div class="max-w-5xl mx-auto px-6 py-20">
+            <div class="animate-fade-in">
+                <p class="era-badge text-accent text-xs mb-4">BUILDING AI/ML SINCE 2016</p>
+            </div>
+            <h1 class="font-display text-5xl md:text-7xl text-paper leading-tight animate-fade-in animate-delay-1">
+                Rahul Gupta
+            </h1>
+            <p class="text-xl md:text-2xl text-muted mt-6 max-w-2xl font-light leading-relaxed animate-fade-in animate-delay-2">
+                Head of AI Foundry. 15+ years leading engineering teams. 
+                Building enterprise AI systems that drive measurable, responsible impact for Fortune 500 clients.
+            </p>
+            <div class="flex flex-wrap gap-3 mt-8 animate-fade-in animate-delay-3">
+                <span class="tech-tag">Multi-Agent Systems</span>
+                <span class="tech-tag">Enterprise AI</span>
+                <span class="tech-tag">MLOps</span>
+                <span class="tech-tag">Responsible AI</span>
+            </div>
+            <div class="flex gap-4 mt-10 animate-fade-in animate-delay-4">
+                <a href="https://linkedin.com/in/rahulkgup" target="_blank" class="text-muted hover:text-paper transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a href="https://github.com/rahulkgup" target="_blank" class="text-muted hover:text-paper transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="https://arxiv.org/abs/2508.07569" target="_blank" class="text-muted hover:text-paper transition-colors" title="Latest Publication">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Career Context -->
+    <section class="max-w-5xl mx-auto px-6 py-12">
+        <div class="grid md:grid-cols-3 gap-4">
+            <div class="career-marker px-4 py-3 rounded-r-lg">
+                <p class="text-xs text-muted mb-1">Current</p>
+                <p class="text-paper font-medium">Head of AI Foundry</p>
+                <p class="text-sm text-muted">Evergreen, an Insight Global company</p>
+            </div>
+            <div class="career-marker px-4 py-3 rounded-r-lg">
+                <p class="text-xs text-muted mb-1">2021–2024</p>
+                <p class="text-paper font-medium">VP, Data & AI</p>
+                <p class="text-sm text-muted">Truist Financial</p>
+            </div>
+            <div class="career-marker px-4 py-3 rounded-r-lg">
+                <p class="text-xs text-muted mb-1">2011–2020</p>
+                <p class="text-paper font-medium">Sr. Manager, ML</p>
+                <p class="text-sm text-muted">Quinnox Inc</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Journey Timeline Section -->
+    <section id="journey" class="max-w-5xl mx-auto px-6 py-24">
+        <div class="mb-16">
+            <p class="era-badge text-accent text-xs mb-3">THE JOURNEY</p>
+            <h2 class="font-display text-4xl text-paper">A Decade of Building</h2>
+            <p class="text-muted mt-4 max-w-xl">From classical ML foundations to enterprise-scale multi-agent systems.</p>
+        </div>
+        
+        <!-- Timeline -->
+        <div class="relative pl-8">
+            <div class="timeline-line"></div>
+            
+            <!-- Era: 2016-2017 -->
+            <div class="timeline-item relative pb-16">
+                <div class="timeline-dot"></div>
+                <div class="pl-8">
+                    <div class="flex items-baseline gap-3 mb-6">
+                        <span class="font-display text-3xl text-paper">2016–2017</span>
+                        <span class="era-badge text-xs text-accent">FOUNDATIONS</span>
+                    </div>
+                    <p class="text-muted mb-6 text-sm">Machine Learning Nanodegree era — classical ML, supervised learning, model evaluation</p>
+                    
+                    <div class="project-card rounded-lg p-5 mb-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-medium text-paper">Titanic_Survival_Exploration</h3>
+                            <span class="text-xs text-muted font-mono">2016</span>
+                        </div>
+                        <p class="text-muted text-sm mb-4">
+                            Survival prediction using decision trees and feature engineering — my entry into applied machine learning.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">scikit-learn</span>
+                            <span class="tech-tag">Pandas</span>
+                        </div>
+                        <a href="https://github.com/rahulkgup/Titanic_Survival_Exploration" target="_blank" class="github-link text-accent text-sm flex items-center gap-1 hover:underline">
+                            View on GitHub
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <div class="project-card rounded-lg p-5 mb-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-medium text-paper">student_intervention</h3>
+                            <span class="text-xs text-muted font-mono">2016</span>
+                        </div>
+                        <p class="text-muted text-sm mb-4">
+                            Early warning system predicting student dropout risk, comparing SVM, ensemble methods, and neural approaches.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">SVM</span>
+                            <span class="tech-tag">Ensemble Methods</span>
+                        </div>
+                        <a href="https://github.com/rahulkgup/student_intervention" target="_blank" class="github-link text-accent text-sm flex items-center gap-1 hover:underline">
+                            View on GitHub
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <div class="project-card rounded-lg p-5 mb-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-medium text-paper">Boston_Housing</h3>
+                            <span class="text-xs text-muted font-mono">2016</span>
+                        </div>
+                        <p class="text-muted text-sm mb-4">
+                            Regression model for housing price prediction with cross-validation and rigorous model evaluation pipelines.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Regression</span>
+                            <span class="tech-tag">Cross-Validation</span>
+                        </div>
+                        <a href="https://github.com/rahulkgup/Boston_Housing" target="_blank" class="github-link text-accent text-sm flex items-center gap-1 hover:underline">
+                            View on GitHub
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="project-card rounded-lg p-5 mb-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-medium text-paper">handwritten-digit-recognition-convnets</h3>
+                            <span class="text-xs text-muted font-mono">2017</span>
+                        </div>
+                        <p class="text-muted text-sm mb-4">
+                            CNN-based digit classifier using Keras/Theano — built before TensorFlow 2.0 dominated the landscape.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">Keras</span>
+                            <span class="tech-tag">Theano</span>
+                            <span class="tech-tag">CNN</span>
+                        </div>
+                        <a href="https://github.com/rahulkgup/handwritten-digit-recognition-using-convnets-keras-theano" target="_blank" class="github-link text-accent text-sm flex items-center gap-1 hover:underline">
+                            View on GitHub
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Era: 2018-2019 -->
+            <div class="timeline-item relative pb-16">
+                <div class="timeline-dot"></div>
+                <div class="pl-8">
+                    <div class="flex items-baseline gap-3 mb-6">
+                        <span class="font-display text-3xl text-paper">2018–2019</span>
+                        <span class="era-badge text-xs text-accent">DEEP LEARNING</span>
+                    </div>
+                    <p class="text-muted mb-6 text-sm">Stanford CS231N era — computer vision, CNNs, financial time-series analysis</p>
+                    
+                    <div class="project-card rounded-lg p-5 mb-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-medium text-paper">deep-learning-foundation</h3>
+                            <span class="text-xs text-muted font-mono">2018</span>
+                        </div>
+                        <p class="text-muted text-sm mb-4">
+                            End-to-end deep learning portfolio: sentiment analysis with RNNs, image classification with CNNs, sequence modeling.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">RNN</span>
+                            <span class="tech-tag">CNN</span>
+                            <span class="tech-tag">NLP</span>
+                        </div>
+                        <a href="https://github.com/rahulkgup/deep-learning-foundation" target="_blank" class="github-link text-accent text-sm flex items-center gap-1 hover:underline">
+                            View on GitHub
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <div class="project-card rounded-lg p-5 mb-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-medium text-paper flex items-center gap-2">
+                                SP500-Stock-Movement-Prediction-CNN
+                                <span class="text-xs bg-accent/20 text-accent px-2 py-0.5 rounded">Published</span>
+                            </h3>
+                            <span class="text-xs text-muted font-mono">2019</span>
+                        </div>
+                        <p class="text-muted text-sm mb-4">
+                            Deep learning for financial time series — predicting market movements using convolutional architectures. Stanford CS231N research project, later published in ADaSci Lattice Journal.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">CNN</span>
+                            <span class="tech-tag">Time-Series</span>
+                            <span class="tech-tag">Finance</span>
+                        </div>
+                        <a href="https://github.com/rahulkgup/SP500-Stock-Movement-Prediction-using-CNN" target="_blank" class="github-link text-accent text-sm flex items-center gap-1 hover:underline">
+                            View on GitHub
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Era: 2020-2023 -->
+            <div class="timeline-item relative pb-16">
+                <div class="timeline-dot"></div>
+                <div class="pl-8">
+                    <div class="flex items-baseline gap-3 mb-6">
+                        <span class="font-display text-3xl text-paper">2020–2023</span>
+                        <span class="era-badge text-xs text-accent">ENTERPRISE AI</span>
+                    </div>
+                    <p class="text-muted mb-6 text-sm">VP at Truist Financial — AI/ML at scale, compliance systems, production ML infrastructure</p>
+                    
+                    <div class="project-card rounded-lg p-5 mb-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-medium text-paper">cust-eval</h3>
+                            <span class="text-xs text-muted font-mono">2024</span>
+                        </div>
+                        <p class="text-muted text-sm mb-4">
+                            CLI tool for automated customer evaluation scoring — production utility for enterprise sales intelligence.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">CLI</span>
+                            <span class="tech-tag">Automation</span>
+                        </div>
+                        <a href="https://github.com/rahulkgup/cust-eval" target="_blank" class="github-link text-accent text-sm flex items-center gap-1 hover:underline">
+                            View on GitHub
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                    
+                    <div class="bg-subtle/30 rounded-lg p-5 mb-4 border border-white/5">
+                        <p class="text-muted text-sm italic">
+                            Primary work during this period: proprietary enterprise AI systems at Truist Financial — AI-driven compliance solutions, volatility dashboards, and microservices infrastructure serving regulated financial operations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Era: 2024-Present -->
+            <div class="timeline-item relative pb-8">
+                <div class="timeline-dot" style="background: #e85d04;"></div>
+                <div class="pl-8">
+                    <div class="flex items-baseline gap-3 mb-6">
+                        <span class="font-display text-3xl text-paper">2024–Present</span>
+                        <span class="era-badge text-xs text-ink bg-accent px-2 py-1 rounded">NOW</span>
+                    </div>
+                    <p class="text-muted mb-6 text-sm">Head of AI Foundry — multi-agent systems, RAG architectures, responsible AI at enterprise scale</p>
+                    
+                    <div class="project-card rounded-lg p-5 mb-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-medium text-paper flex items-center gap-2">
+                                agentic-sow-drafter
+                                <span class="text-xs bg-accent/20 text-accent px-2 py-0.5 rounded">IEEE Published</span>
+                            </h3>
+                            <span class="text-xs text-muted font-mono">2025</span>
+                        </div>
+                        <p class="text-muted text-sm mb-4">
+                            Multi-agent system for autonomous document generation. Published at IEEE ICMLA 2025: "Retrieval-Augmented Multi-Agent System for Rapid Statement of Work Generation."
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">LangChain</span>
+                            <span class="tech-tag">Multi-Agent</span>
+                            <span class="tech-tag">RAG</span>
+                            <span class="tech-tag">TypeScript</span>
+                        </div>
+                        <div class="flex gap-4">
+                            <a href="https://github.com/rahulkgup/agentic-sow-drafter" target="_blank" class="github-link text-accent text-sm flex items-center gap-1 hover:underline">
+                                View on GitHub
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
+                            <a href="https://arxiv.org/abs/2508.07569" target="_blank" class="text-muted text-sm flex items-center gap-1 hover:text-paper hover:underline">
+                                Read Paper →
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card rounded-lg p-5 mb-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-medium text-paper">LLMReasoning2</h3>
+                            <span class="text-xs text-muted font-mono">2024</span>
+                        </div>
+                        <p class="text-muted text-sm mb-4">
+                            Research into LLM reasoning patterns — evaluating chain-of-thought and multi-step inference capabilities.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">LLMs</span>
+                            <span class="tech-tag">Reasoning</span>
+                        </div>
+                        <a href="https://github.com/rahulkgup/LLMReasoning2" target="_blank" class="github-link text-accent text-sm flex items-center gap-1 hover:underline">
+                            View on GitHub
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="project-card rounded-lg p-5 mb-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-medium text-paper">pole-detection-cv</h3>
+                            <span class="text-xs text-muted font-mono">2025</span>
+                        </div>
+                        <p class="text-muted text-sm mb-4">
+                            Computer vision model detecting utility infrastructure from aerial imagery — infrastructure monitoring at scale.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">Computer Vision</span>
+                            <span class="tech-tag">Detection</span>
+                            <span class="tech-tag">Jupyter</span>
+                        </div>
+                        <a href="https://github.com/rahulkgup/pole-detection-cv" target="_blank" class="github-link text-accent text-sm flex items-center gap-1 hover:underline">
+                            View on GitHub
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="project-card rounded-lg p-5 mb-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-medium text-paper">SmartTransit</h3>
+                            <span class="text-xs text-muted font-mono">2025</span>
+                        </div>
+                        <p class="text-muted text-sm mb-4">
+                            Proximity-based transit notifications — location-aware mobile app delivering real-time bus schedules when near stops.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">Swift</span>
+                            <span class="tech-tag">iOS</span>
+                            <span class="tech-tag">Location Services</span>
+                        </div>
+                        <a href="https://github.com/rahulkgup/SmartTransit" target="_blank" class="github-link text-accent text-sm flex items-center gap-1 hover:underline">
+                            View on GitHub
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Publications Section -->
+    <section id="publications" class="bg-subtle/30">
+        <div class="max-w-5xl mx-auto px-6 py-24">
+            <div class="mb-12">
+                <p class="era-badge text-accent text-xs mb-3">PUBLICATIONS & SPEAKING</p>
+                <h2 class="font-display text-4xl text-paper">Research & Thought Leadership</h2>
+            </div>
+            
+            <div class="space-y-4">
+                <a href="https://arxiv.org/abs/2508.07569" target="_blank" class="publication-card block rounded-xl p-6">
+                    <div class="flex items-start justify-between gap-4">
+                        <div>
+                            <p class="text-xs text-accent font-mono mb-2">IEEE ICMLA 2025</p>
+                            <h3 class="font-medium text-paper mb-2">Retrieval-Augmented Multi-Agent System for Rapid Statement of Work Generation</h3>
+                            <p class="text-muted text-sm">Published research on multi-agent architectures for enterprise document automation.</p>
+                        </div>
+                        <svg class="w-5 h-5 text-muted flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                        </svg>
+                    </div>
+                </a>
+                
+                <a href="https://adasci.org/lattice/lattice-vol-1-issue-3/" target="_blank" class="publication-card block rounded-xl p-6">
+                    <div class="flex items-start justify-between gap-4">
+                        <div>
+                            <p class="text-xs text-accent font-mono mb-2">ADaSci Lattice Journal, Vol. 1 • 2021</p>
+                            <h3 class="font-medium text-paper mb-2">Standard & Poor 500 Movement Prediction</h3>
+                            <p class="text-muted text-sm">Research on CNN-based financial time-series analysis for market prediction.</p>
+                        </div>
+                        <svg class="w-5 h-5 text-muted flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                        </svg>
+                    </div>
+                </a>
+                
+                <div class="publication-card rounded-xl p-6">
+                    <p class="text-xs text-accent font-mono mb-2">Stanford CS231N • 2019</p>
+                    <h3 class="font-medium text-paper mb-2">Financial Time-Series Analysis using CNN</h3>
+                    <p class="text-muted text-sm">Research paper on applying computer vision techniques to financial data.</p>
+                </div>
+            </div>
+            
+            <div class="mt-12">
+                <h3 class="font-medium text-paper mb-6">Speaking Engagements</h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="publication-card rounded-xl p-5">
+                        <p class="text-xs text-muted font-mono mb-1">April 2025</p>
+                        <p class="text-paper text-sm font-medium">3rd Annual Atlanta Technology Summit</p>
+                        <p class="text-muted text-sm">Panelist: "Cultivating Culture in the Age of AI"</p>
+                    </div>
+                    <div class="publication-card rounded-xl p-5">
+                        <p class="text-xs text-muted font-mono mb-1">April 2025</p>
+                        <p class="text-paper text-sm font-medium">University of Texas at Dallas</p>
+                        <p class="text-muted text-sm">Guest Lecturer: Enterprise Agentic AI Solutions</p>
+                    </div>
+                    <a href="https://adasci.org/product/upcoming-webinar-ai-driven-risk-management-in-derivatives-trading/" target="_blank" class="publication-card rounded-xl p-5 block">
+                        <p class="text-xs text-muted font-mono mb-1">March 2025</p>
+                        <p class="text-paper text-sm font-medium">ADaSci Webinar</p>
+                        <p class="text-muted text-sm">AI-Driven Risk Management in Derivatives Trading</p>
+                    </a>
+                    <div class="publication-card rounded-xl p-5">
+                        <p class="text-xs text-muted font-mono mb-1">October 2020</p>
+                        <p class="text-paper text-sm font-medium">Deep Learning Developers Conference</p>
+                        <p class="text-muted text-sm">Keynote: AI Use Cases in Capital Markets</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Recognition Section -->
+    <section id="recognition" class="max-w-5xl mx-auto px-6 py-24">
+        <div class="mb-12">
+            <p class="era-badge text-accent text-xs mb-3">RECOGNITION & AFFILIATIONS</p>
+            <h2 class="font-display text-4xl text-paper">Awards & Professional Memberships</h2>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="recognition-card rounded-xl p-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-paper">Session Chair</h3>
+                        <p class="text-muted text-sm">IEEE ICMLA 2025 • Generative AI Track</p>
+                    </div>
+                </div>
+                <p class="text-muted text-sm">
+                    Invited to chair sessions and evaluate peer submissions at the IEEE International Conference on Machine Learning and Applications.
+                </p>
+            </div>
+            
+            <div class="recognition-card rounded-xl p-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-paper">Truist Innovation Award</h3>
+                        <p class="text-muted text-sm">2022</p>
+                    </div>
+                </div>
+                <p class="text-muted text-sm">
+                    Recognized for highest innovative contributions in financial solutions across the bank.
+                </p>
+            </div>
+            
+            <div class="recognition-card rounded-xl p-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-paper">HBR Advisory Council</h3>
+                        <p class="text-muted text-sm">Member since 2023</p>
+                    </div>
+                </div>
+                <p class="text-muted text-sm">
+                    Harvard Business Review Advisory Council member contributing to business and technology thought leadership.
+                </p>
+            </div>
+            
+            <div class="recognition-card rounded-xl p-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
+                        <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-medium text-paper">Association of Data Scientists</h3>
+                        <p class="text-muted text-sm">Member since 2019</p>
+                    </div>
+                </div>
+                <p class="text-muted text-sm">
+                    Active member and contributor to ADaSci, including journal publications and webinar presentations.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Education -->
+        <div class="mt-16">
+            <h3 class="font-medium text-paper mb-6">Education & Certifications</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-subtle/30 rounded-lg p-4 border border-white/5">
+                    <p class="text-accent text-xs font-mono mb-1">2019</p>
+                    <p class="text-paper text-sm font-medium">Stanford University</p>
+                    <p class="text-muted text-xs">CS231n, Artificial Intelligence</p>
+                </div>
+                <div class="bg-subtle/30 rounded-lg p-4 border border-white/5">
+                    <p class="text-accent text-xs font-mono mb-1">2017</p>
+                    <p class="text-paper text-sm font-medium">MIT Professional Education</p>
+                    <p class="text-muted text-xs">Data Science & Big Data Analytics</p>
+                </div>
+                <div class="bg-subtle/30 rounded-lg p-4 border border-white/5">
+                    <p class="text-accent text-xs font-mono mb-1">2016</p>
+                    <p class="text-paper text-sm font-medium">Georgia Tech / Udacity</p>
+                    <p class="text-muted text-xs">Machine Learning Nanodegree</p>
+                </div>
+                <div class="bg-subtle/30 rounded-lg p-4 border border-white/5">
+                    <p class="text-accent text-xs font-mono mb-1">2004</p>
+                    <p class="text-paper text-sm font-medium">BITS Pilani</p>
+                    <p class="text-muted text-xs">M.S., Software Systems</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="border-t border-white/5">
+        <div class="max-w-5xl mx-auto px-6 py-12">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div>
+                    <p class="font-display text-xl text-paper mb-1">Rahul Gupta</p>
+                    <p class="text-muted text-sm">Building AI that enterprises can trust.</p>
+                </div>
+                <div class="flex gap-6">
+                    <a href="https://linkedin.com/in/rahulkgup" target="_blank" class="text-muted hover:text-accent transition-colors text-sm">LinkedIn</a>
+                    <a href="https://github.com/rahulkgup" target="_blank" class="text-muted hover:text-accent transition-colors text-sm">GitHub</a>
+                    <a href="https://arxiv.org/abs/2508.07569" target="_blank" class="text-muted hover:text-accent transition-colors text-sm">arXiv</a>
+                </div>
+            </div>
+            <p class="text-center text-muted/50 text-xs mt-12">© 2025 Rahul Gupta. Built with intention.</p>
+        </div>
+    </footer>
+    
+    <script>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            observer.observe(item);
+        });
+    </script>
 </body>
 </html>
